@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/username/project.git'
+                git credentialsId: 'github-token', url: 'https://github.com/yodisyaeful/NEXAPANEL.git'
             }
         }
 
@@ -28,14 +28,14 @@ pipeline {
 
         stage('Check Files') {
             steps {
-                bat 'dir /s'
+                bat 'dir'
             }
         }
     }
 
     post {
         always {
-            junit allowEmptyResults: true, testResults: '**/test-results/*.xml'
+            junit allowEmptyResults: true, testResults: 'results.xml'
         }
     }
 }
