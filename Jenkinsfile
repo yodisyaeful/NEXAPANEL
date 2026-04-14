@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git credentialsId: 'github-token', url: 'https://github.com/yodisyaeful/NEXAPANEL.git'
+                git branch: 'main', credentialsId: 'github-token', url: 'https://github.com/yodisyaeful/NEXAPANEL.git'
             }
         }
 
