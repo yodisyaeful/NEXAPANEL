@@ -4,18 +4,26 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                echo 'Ambil source code...'
+                git 'https://github.com/username/project.git'
             }
         }
-        stage('Build') {
+
+        stage('Install') {
             steps {
-                echo 'Build project...'
+                bat 'npm install'
             }
         }
-        stage('Test') {
+
+        stage('Automation Test') {
             steps {
-                echo 'Testing...'
+                bat 'npm test'
             }
+        }
+    }
+
+    post {
+        always {
+            junit '**/reports/*.xml'
         }
     }
 }
