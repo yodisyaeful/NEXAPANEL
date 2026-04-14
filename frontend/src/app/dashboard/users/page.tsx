@@ -53,7 +53,7 @@ export default function UsersPage() {
     <div>
       <div style={{ marginBottom: 24 }}>
         <h2 style={{ fontFamily: 'Syne, sans-serif', fontWeight: 700, fontSize: 24, letterSpacing: '-0.3px', marginBottom: 4 }}>
-          Manajemen Pengguna
+          User Management
         </h2>
         <p style={{ color: 'var(--muted)', fontSize: 14 }}>Total {users.length} pengguna terdaftar</p>
       </div>
