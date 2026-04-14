@@ -25,11 +25,17 @@ pipeline {
                 bat 'npx playwright test'
             }
         }
+
+        stage('Check Files') {
+            steps {
+                bat 'dir /s'
+            }
+        }
     }
 
     post {
         always {
-            junit 'test-results/results.xml'
+            junit allowEmptyResults: true, testResults: '**/test-results/*.xml'
         }
     }
 }
