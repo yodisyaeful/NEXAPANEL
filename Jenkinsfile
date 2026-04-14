@@ -4,18 +4,32 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                echo 'Ambil source code...'
+                git 'https://github.com/username/project.git'
             }
         }
-        stage('Build') {
+
+        stage('Install Dependencies') {
             steps {
-                echo 'Build project...'
+                bat 'npm install'
             }
         }
-        stage('Test') {
+
+        stage('Install Playwright Browsers') {
             steps {
-                echo 'Testing...'
+                bat 'npx playwright install'
             }
+        }
+
+        stage('Run Playwright Test') {
+            steps {
+                bat 'npx playwright test'
+            }
+        }
+    }
+
+    post {
+        always {
+            junit 'test-results/results.xml'
         }
     }
 }
